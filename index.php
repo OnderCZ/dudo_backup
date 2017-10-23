@@ -1,11 +1,4 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-<title>Title of the document</title>
-</head>
-
-<body>
-<?php
+﻿<?php
 
 $servername = "localhost";
 $username = "root";
@@ -22,8 +15,8 @@ if ($conn->connect_error) {
 $conn->set_charset('utf8');
 //var_dump($conn);
 
-$sql = "SELECT id, autor, nadpis, text FROM web_texty";	// texty
-//$sql = "SELECT id, autor, nadpis, text FROM web_clanky"; // clanky
+//$sql = "SELECT id, autor, nadpis, text FROM web_texty";	// texty
+$sql = "SELECT id, autor, nadpis, text FROM web_clanky"; // clanky
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -37,8 +30,3 @@ if ($result->num_rows > 0) {
     echo "0 results";
 }
 $conn->close();
-
-?>
-</body>
-
-</html>
