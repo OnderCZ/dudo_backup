@@ -15,17 +15,24 @@ if ($conn->connect_error) {
 $conn->set_charset('utf8');
 //var_dump($conn);
 
-//$sql = "SELECT id, autor, nadpis, text FROM web_texty";	// texty
-$sql = "SELECT id, autor, nadpis, text FROM web_clanky"; // clanky
+$sql = "SELECT id, autor, nadpis, perex, text FROM web_texty";	// texty
+//$sql = "SELECT id, autor, nadpis, text FROM web_clanky"; // clanky
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
+/*	
     echo "<table><tr><th>ID</th><th>Nadpis</th><th>Text</th></tr>";
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "<tr><td>".$row["id"]."</td><td>".$row["nadpis"]."</td><td>".$row["text"]."</td></tr>";
+        echo "<tr><td>".$row["id"]."</td><td>".$row["nadpis"]."</td><td>".$row["perex"].$row["text"]."</td></tr>";
     }
     echo "</table>";
+*/
+    while($row = $result->fetch_assoc()) {
+        echo "<h1>".$row["nadpis"]."</h1>";
+		echo $row["perex"].$row["text"];
+    }
+
 } else {
     echo "0 results";
 }
